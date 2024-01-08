@@ -1,0 +1,107 @@
+win pop UP function
+
+ function win() {
+
+        swal({
+            title: "You Won!",
+            text: "You defeated them:\n Now collect your Space ship parts\n ",
+            imageUrl: "assets/win_trophy.png",
+            imageSize: "200x200",
+            confirmButtonText: "restart!!",
+            confirmButtonColor: "brown",
+        },
+            function () {
+                window.location.reload();
+            }
+
+        )
+
+
+    }
+
+
+
+
+//level up in pop UP function
+    function nextlevelpopup() {
+
+        swal({
+            title: "HURRAYY!!!!",
+            text: "You defeated them:\n Now collect your Space ship parts\n ",
+            imageUrl: "assets/level_up.png",
+            imageSize: "200x200",
+            confirmButtonText: "Let's go back HOME!!",
+            confirmButtonColor: "brown",
+        },
+            function () {
+                gameState = "level2"
+            }
+
+        )
+
+
+    }
+
+
+
+//health
+
+health
+    function healthlevel1() {
+// if(gameState != "lost"){
+        stroke("lightgreen")
+        strokeWeight(7)
+        noFill()
+        // rectMode(CENTER)
+        rect(600, 50, max_health, 20)
+
+        noStroke()
+        fill("green")
+        // rectMode(CENTER)
+        rect(600, 50, health, 20)
+    // }
+
+    }
+
+
+// add buttons with imageSize
+    aboutbutton = createImg("assets/about_button.png");
+    aboutbutton.position(10, 10);
+    aboutbutton.size(80, 70);
+    aboutbutton.hide();
+
+
+
+
+    // touching of a sprite and sprites in a group
+
+
+        for (var i = 0; i < spriteGroupname.length; i++) {
+            if (jet.isTouching(spriteGroupname.get(i))) {
+                health -= 100
+                spriteGroupname.get(i).remove()
+                bulletGroup.destroyEach()
+            }
+        }
+
+
+
+
+//to make player jump with up arrow
+
+    if(keyDown("UP_ARROW")){
+        // player.y-= 25;
+
+        player.velocityY =-5
+    } 
+
+
+//gravity
+player.velocityY +=0.8
+
+
+WE NEED TO COLLIDE PLAYER TO THE INVISIBLE GROUND FOR JUMPING
+
+
+
+//remove background of png
